@@ -39,8 +39,8 @@ public class FileServiceImpl implements FileServiceAPI {
 		try {
 			Path filePath = this.rootFolder.resolve(fileName).normalize();
 			Resource resource = new UrlResource(filePath.toUri());
-			if (resource.exists()) {
-				return resource;
+			if (!resource.exists()) {
+				return null;
 			} else {
 				System.out.println("Archivo no existe");
 			}
